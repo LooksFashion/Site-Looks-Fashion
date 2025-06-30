@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Produto - Looks Fashion</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="header">
+    <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">Looks Fashion</a></div>
+  </header>
+
+  <main>
+    <section id="detalhes-produto"></section>
+  </main>
+
+  <footer class="footer">
+    <p>CNPJ: 58.370.471/0001-71</p>
+    <p>Endereço: Av. Presidente Vargas, N° 1170, Centro - Iguatemi/MS</p>
+    <p>WhatsApp: (67) 99287-8774</p>
+    <p>Instagram: @looks_fashion_igt</p>
+  </footer>
+
+  <script>
+    const listaProdutos = [
+      {
+        id: 1,
+        nome: "Vestido Layla",
+        preco: 169.90,
+        imagens: ["imagens/Vestido Rosa Nula Manga.jpg", "imagens/Vestido Rosa Nula Manga 2.jpg"],
+        categoria: "vestidos",
+        descricao: "Vestido elegante com tecido leve, ideal para ocasiões especiais.",
+        tamanhos: ["P", "PP"],
+        cores: ["Rosa"],
+        estoque: 1
+      },
+      {
+        id: 2,
+        nome: "Conjunto Colete e Calça",
+        preco: 189.90,
+        imagens: ["imagens/Conjunto colete e Calca Giz.jpg"],
+        categoria: "Conjunto",
+        descricao: "Conjunto elegante de colete e calça para eventos formais",
+        tamanhos: ["GG"],
+        cores: ["Preto Giz"],
+        estoque: 1
+      },
+      {
+        id: 3,
+        nome: "Conjunto Colete e Shorts",
+        preco: 159.90,
+        imagens: ["imagens/conjunto colete e shorts plus size preto.jpg"],
+        categoria: "Conjunto",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais",
+        tamanhos: ["G3"],
+        cores: ["Preto"],
+        estoque: 1
+      },
+      {
+        id: 4,
+        nome: "Vestido Tubinho",
+        preco: 169.90,
+        imagens: ["imagens/vestido tubinho vermelho.jpg"],
+        categoria: "vestidos",
+        descricao: "Vestido tubinho canelado forrado por dentro ideal para qualquer ocasiao",
+        tamanhos: ["G"],
+        cores: ["Vermelho"],
+        estoque: 1
+
+      },
+      {
+       id: 5,
+       nome: "Macacao Bianca",
+       preco: 169.90,
+       imagens: ["imagens/Macacao duna rosa com cinto.jpg"],
+       categoria: "macacao",
+       descricao: "Tecido Duna com cinto encapado elegante para eventos formais.",
+       tamanhos: ["G"],
+       cores: ["Rosa Pink"],
+       estoque: 1
+      },
+      {
+        id: 6,
+        nome: "Bory Suplex",
+        preco: 69.90,
+        imagens: ["imagens/Bory Branco.jpg", "imagens/Bory Preto.jpg","imagens/Bory Bege.jpg" ],
+        categoria: "",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais",
+        tamanhos: ["Unico"],
+        cores: ["Branco","Preto","Bege"],
+        estoque: 1
+      },
+      {
+        id: 7,
+        nome: "Vestido Floral",
+        preco: 109.90,
+        imagens: ["imagens/Vestido Bege Floral.jpg", "imagens/Vestido Bege Floral Costas.jpg"],
+        categoria: "vestidos",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais",
+        tamanhos: ["Unico"],
+        cores: ["Bege"],
+        estoque: 1
+      },
+      {
+        id: 8,
+        nome: "Macacão Bianca",
+        preco: 169.90,
+        imagens: ["imagens/Macacao duna verde com cinto.jpg"],
+        categoria: "macacao",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais",
+        tamanhos: ["GG"],
+        cores: ["Verde"],
+        estoque: 1
+      },
+      {
+        id: 9,
+        nome: "Conjunto Analu",
+        preco: 99.90,
+        imagens: ["imagens/Conjunto Cropped e Calca Preto.jpg"],
+        categoria: "Conjunto",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais",
+        tamanhos: ["P"],
+        cores: ["Preto"],
+        estoque: 1
+      },
+      {
+        id: 10,
+        nome: "Vestido Liz",
+        preco: 129.90,
+        imagens: ["imagens/Vestido Liz.jpg"],
+        categoria: "vestidos",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais",
+        tamanhos: ["M"],
+        cores: ["Lilás"],
+        estoque: 1
+      },
+      {
+        id: 11,
+        nome: "Macacão Yasmin",
+        preco: 169.90,
+        imagens: ["imagens/Macacao Alfaiataria.jpg"],
+        categoria: "Macacao",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais",
+        tamanhos: ["M"],
+        cores: ["Bege"],
+        estoque: 1
+      },
+      {
+        id: 12,
+        nome: "Cacharrel Feminina",
+        preco: 69.90,
+        imagens: ["imagens/Cacharrel Areia.jpg","imagens/Cacharrel Off.jpg","imagens/Cacharrel Preto.jpg"],
+        categoria: "Conjunto",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais",
+        tamanhos: ["G"],
+        cores: ["Areia","Off","Preto"],
+        estoque: 1
+      },
+      {
+        id: 13,
+        nome: "Lingerie Penelope",
+        preco: 119.90,
+        imagens: ["imagens/Lingerie Penelope.jpg","imagens/Lingerie Penelope zoom.jpg"],
+        categoria: "Conjunto",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais",
+        tamanhos: ["G"],
+        cores: ["Rosa Pink"],
+        estoque: 1
+      },
+      {
+        id: 14,
+        nome: "Blusa Ciganinha",
+        preco: 79.90,
+        imagens: ["imagens/Blusa Ciganinha Verde.jpg"],
+        categoria: "Todos",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais",
+        tamanhos: ["G2"],
+        cores: ["Verde"],
+        estoque: 1
+       },
+       {
+        id: 15,
+        nome: "Blusa Ciganinha",
+        preco: 79.90,
+        imagens: ["imagens/Blusa Ciganinha Preto.jpg"],
+        categoria: "Todos",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais",
+        tamanhos: ["G1"],
+        cores: ["Preto"],
+        estoque: 1
+       },
+       {
+        id: 16,
+        nome: "Blusa Ciganinha",
+        preco: 79.90,
+        imagens: ["imagens/Blusa Ciganinha Rosa.jpg"],
+        categoria: "Todos",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais",
+        tamanhos: ["G3"],
+        cores: ["Rosa Pink"],
+        estoque: 1
+       },
+       {
+        id: 17,
+        nome: "Blusa Andreza",
+        preco: 45.00,
+        imagens: ["imagens/Blusa amarela Andreza.jpg"],
+        categoria: "Todos",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais",
+        tamanhos: ["M"],
+        cores: ["Amarelo"],
+        estoque: 1
+       },
+       {
+        id: 18,
+        nome: "Calca Alfaiataria",
+        preco: 169.00,
+        imagens: ["imagens/Calca Alfaiataria Bege.jpg"],
+        categoria: "Todos",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais",
+        tamanhos: ["G2"],
+        cores: ["Bege"],
+        estoque: 1
+       },
+       {
+        id: 19,
+        nome: "Vestido Angelica",
+        preco: 169.00,
+        imagens: ["imagens/Vestido Angelica.jpg"],
+        categoria: "Vestidos",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais",
+        tamanhos: ["U"],
+        cores: ["Preto"],
+        estoque: 1
+       },
+       {
+        id: 20,
+        nome: "Vestido Bella",
+        preco: 149.00,
+        imagens: ["imagens/Vestido Bella.jpg"],
+        categoria: "Vestidos",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais",
+        tamanhos: ["G"],
+        cores: ["Verde Florido"],
+        estoque: 1
+       },
+       {
+        id: 21,
+        nome: "Saia Sarja",
+        preco: 69.90,
+        imagens: ["imagens/Saia Sarja Preto.jpg"],
+        categoria: "Todos",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais",
+        tamanhos: ["36"],
+        cores: ["Preto"],
+        estoque: 1
+       },
+       {
+        id: 22,
+        nome: "Shorts Jeans",
+        preco: 79.90,
+        imagens: ["imagens/Shorts Jeans Bordado.jpg"],
+        categoria: "Todos",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais",
+        tamanhos: ["38","40","42"],
+        cores: ["Jeans"],
+        estoque: 2
+       },
+       {
+        id: 23,
+        nome: "Macaquinho Natalia",
+        preco: 149.90,
+        imagens: ["imagens/Macaquinho Natalia.jpg"],
+        categoria: "Todos",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais",
+        tamanhos: ["G"],
+        cores: ["Verde Agua"],
+        estoque: 1
+       },
+       {
+        id: 25,
+        nome: "Vestido Finder",
+        preco: 69.90,
+        imagens: ["imagens/Vestido Finder.jpg"],
+        categoria: "Vestidos",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais",
+        tamanhos: ["GG"],
+        cores: ["Preto"],
+        estoque: 1
+       },
+       {
+        id: 26,
+        nome: "Conjunto Mariana",
+        preco: 109.90,
+        imagens: ["imagens/Conjunto Cropped e Saia.jpg"],
+        categoria: "Conjunto",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais",
+        tamanhos: ["M"],
+        cores: ["Rosa"],
+        estoque: 1
+       },
+       {
+        id: 27,
+        nome: "Vestido Luna",
+        preco: 169.90,
+        imagens: ["imagens/Vestido Luna.jpg"],
+        categoria: "Vestidos",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais",
+        tamanhos: ["M"],
+        cores: ["Rosa"],
+        estoque: 1
+       },
+       {
+        id: 28,
+        nome: "Macaquinho Manuela",
+        preco: 149.90,
+        imagens: ["imagens/Macaquinho Marrom.jpg","imagens/Macaquinho Bege.jpg"],
+        categoria: "Todos",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais",
+        tamanhos: ["U"],
+        cores: ["Marrom","Bege"],
+        estoque: 1
+       },
+       {
+        id: 29,
+        nome: "Conjunto Jessica",
+        preco: 149.90,
+        imagens: ["imagens/Conjunto Jessica.jpg"],
+        categoria: "Conjuntos",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais",
+        tamanhos: ["P"],
+        cores: ["Branco"],
+        estoque: 1
+       },
+       {
+        id: 30,
+        nome: "Vestido Camila",
+        preco: 169.90,
+        imagens: ["imagens/Vestido Camila.jpg"],
+        categoria: "Vestidos",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais",
+        tamanhos: ["G2"],
+        cores: ["Rosa"],
+        estoque: 1
+       },
+       {
+        id: 31,
+        nome: "Vestido Aurora",
+        preco: 169.90,
+        imagens: ["imagens/Vestido Aurora.jpg"],
+        categoria: "Vestidos",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais",
+        tamanhos: ["G1"],
+        cores: ["Verde"],
+        estoque: 1
+       },
+       {
+        id: 32,
+        nome: "Vestido Helena",
+        preco: 169.90,
+        imagens: ["imagens/Vestido Helena Preto.jpg","imagens/Vestido Helena Branco.jpg","imagens/Vestido Helena Verde.jpg","imagens/Vestido Helena Azul.jpg"],
+        categoria: "Vestidos",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais",
+        tamanhos: ["U"],
+        cores: ["Preto","Branco","Verde","Azul"],
+        estoque: 1
+       },
+       {
+        id: 33,
+        nome: "Vestido Dayane",
+        preco: 169.90,
+        imagens: ["imagens/Vestido Dayane.jpg"],
+        categoria: "Vestidos",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais",
+        tamanhos: ["G"],
+        cores: ["Rosa Salmao"],
+        estoque: 1
+       },
+       {
+        id: 34,
+        nome: "Blusa Nula Mnaga",
+        preco: 39.90,
+        imagens: ["imagens/Blusa Nula MAnga Rosa.jpg","imagens/Blusa Nula Manga Verde.jpg"],
+        categoria: "Todos",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais",
+        tamanhos: ["U"],
+        cores: ["Rosa","Verde"],
+        estoque: 1
+       },
+       {
+        id: 35,
+        nome: "Saia Sarja Cargo",
+        preco: 69.90,
+        imagens: ["imagens/Saia Sarja Bege.jpg"],
+        categoria: "Todos",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais",
+        tamanhos: ["36","40"],
+        cores: ["Bege"],
+        estoque: 1
+       },
+       {
+        id: 36,
+        nome: "Blusa Nula Manga",
+        preco: 39.90,
+        imagens: ["imagens/Blusa Nula Manga Azul.jpg"],
+        categoria: "Todos",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais",
+        tamanhos: ["U"],
+        cores: ["Azul","Verde"],
+        estoque: 1
+       },
+       {
+        id: 37,
+        nome: "Blusa Nula Manga",
+        preco: 69.90,
+        imagens: ["imagens/Blusa Nula Manga Azul.jpg"],
+        categoria: "Todos",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais",
+        tamanhos: ["U"],
+        cores: ["Azul","Verde"],
+        estoque: 1
+       },
+      // Adicione os outros produtos aqui com a chave "imagens"
+    ];
+
+    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+    function salvarCarrinho() {
+      localStorage.setItem("carrinho", JSON.stringify(carrinho));
+    }
+
+    function adicionarAoCarrinho(id, tamanho, cor) {
+      if (!tamanho || !cor) {
+        alert("Por favor, selecione o tamanho e a cor antes de adicionar ao carrinho.");
+        return;
+      }
+      const produto = listaProdutos.find(p => p.id === id);
+      carrinho.push({ id: produto.id, nome: produto.nome, preco: produto.preco, imagem: produto.imagens[0], tamanho, cor, quantidade: 1 });
+      salvarCarrinho();
+      alert("Produto adicionado ao carrinho!");
+    }
+
+    function obterParametroURL(nome) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(nome);
+    }
+
+    function exibirDetalhesProduto() {
+      const id = parseInt(obterParametroURL("id"));
+      const produto = listaProdutos.find(p => p.id === id);
+
+      if (!produto) {
+        document.getElementById("detalhes-produto").innerHTML = "<p>Produto não encontrado.</p>";
+        return;
+      }
+
+      const container = document.getElementById("detalhes-produto");
+      const tamanhosOpcoes = produto.tamanhos.map(t => `<option value="${t}">${t}</option>`).join("");
+      const coresOpcoes = produto.cores.map(c => `<option value="${c}">${c}</option>`).join("");
+
+      const galeria = produto.imagens.map(img => `<img src="${img}" alt="${produto.nome}" class="galeria-img" />`).join("");
+
+      container.innerHTML = `
+        <div class="produto-detalhado">
+          <div class="galeria-produto">${galeria}</div>
+          <h2>${produto.nome}</h2>
+          <p class="descricao">${produto.descricao}</p>
+          <p class="preco">R$ ${produto.preco.toFixed(2)}</p>
+          <label for="select-tamanho"><strong>Escolha o tamanho:</strong></label>
+          <select id="select-tamanho">
+            <option value="">Selecione</option>
+            ${tamanhosOpcoes}
+          </select>
+          <br/>
+          <label for="select-cor"><strong>Escolha a cor:</strong></label>
+          <select id="select-cor">
+            <option value="">Selecione</option>
+            ${coresOpcoes}
+          </select>
+          <p><strong>Estoque disponível:</strong> ${produto.estoque}</p>
+          <div class="botoes-detalhe">
+            <a class="botao-finalizar" href="#" id="btn-whatsapp">Finalizar pelo WhatsApp</a>
+            <button class="botao-finalizar" onclick="
+              const tamanho = document.getElementById('select-tamanho').value;
+              const cor = document.getElementById('select-cor').value;
+              adicionarAoCarrinho(${produto.id}, tamanho, cor);
+            ">Adicionar ao carrinho</button>
+          </div>
+          <p class="observacao-frete">*O valor final pode variar conforme o frete. Você receberá o cálculo completo pelo WhatsApp.</p>
+        </div>
+      `;
+
+      document.getElementById("btn-whatsapp").addEventListener("click", function (e) {
+        e.preventDefault();
+        const tamanho = document.getElementById("select-tamanho").value;
+        const cor = document.getElementById("select-cor").value;
+        if (!tamanho || !cor) {
+          alert("Por favor, selecione o tamanho e a cor antes de continuar.");
+          return;
+        }
+        const mensagem = `Olá! Gostaria de comprar o produto: ${produto.nome}\nTamanho: ${tamanho}\nCor: ${cor}`;
+        const url = `https://wa.me/5567992878774?text=${encodeURIComponent(mensagem)}`;
+        window.open(url, "_blank");
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", exibirDetalhesProduto);
+  </script>
+
+  <style>
+    .galeria-produto {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+    }
+    .galeria-produto img {
+      max-width: 200px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+  </style>
+</body>
+</html>
