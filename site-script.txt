@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Looks Fashion - Loja Feminina</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="header">
+    <div class="logo">Looks Fashion</div>
+    <nav>
+      <ul class="menu">
+        <li><a href="#" onclick="exibirProdutos('')">Todos</a></li>
+        <li><a href="#" onclick="exibirProdutos('vestidos')">Vestidos</a></li>
+        <li><a href="#" onclick="exibirProdutos('macacao')">Macacão</a></li>
+        <li><a href="#" onclick="exibirProdutos('conjuntos')">Conjuntos</a></li>
+        <li><a href="#" onclick="exibirProdutos('acessorios')">Acessórios</a></li>
+      </ul>
+      <div id="icone-carrinho" onclick="toggleCarrinho()">🛒</div>
+      <div id="carrinho-container" class="carrinho-oculto">
+        <ul id="carrinho-dropdown"></ul>
+        <div class="finalizar-container">
+          <p id="total-carrinho"></p>
+          <a href="https://wa.me/5567992878774" target="_blank" class="botao-finalizar">Finalizar pelo WhatsApp</a>
+          <p class="observacao-frete">*O valor final pode variar conforme o frete. Você receberá o cálculo completo pelo WhatsApp.</p>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="lista-produtos"></section>
+  </main>
+
+  <footer class="footer">
+    <p>CNPJ: 58.370.471/0001-71</p>
+    <p>Endereço: Av. Presidente Vargas, N° 1170, Centro - Iguatemi/MS</p>
+    <p>WhatsApp: (67) 99287-8774</p>
+    <p>Instagram: @looks_fashion_igt</p>
+  </footer>
+
+  <script>
+    const listaProdutos = [
+      {
+        id: 1,
+        nome: "Vestido Nula Manga",
+        preco: 169.90,
+        imagens: ["imagens/Vestido Rosa Nula Manga.jpg"],
+        categoria: "vestidos",
+        descricao: "Vestido elegante com tecido leve, ideal para ocasiões especiais.",
+        tamanhos: ["PP", "P"],
+        cores: ["Rosa"]
+      },
+      {
+        id: 2,
+        nome: "Conjunto Colete e Calça",
+        preco: 189.90,
+        imagens: ["imagens/Conjunto colete e Calca Giz.jpg"],
+        categoria: "conjuntos",
+        descricao: "Conjunto elegante de colete e calça para eventos formais.",
+        tamanhos: ["GG"],
+        cores: ["Preto Giz"]
+      },
+      {
+        id: 3,
+        nome: "Conjunto Colete e Shorts",
+        preco: 159.90,
+        imagens: ["imagens/conjunto colete e shorts plus size preto.jpg"],
+        categoria: "conjuntos",
+        descricao: "Conjunto elegante de colete e shorts para eventos formais.",
+        tamanhos: ["G3"],
+        cores: ["Preto"]
+      },
+      {
+        id: 4,
+        nome: "Vestido Tubinho",
+        preco: 169.90,
+        imagens: ["imagens/vestido tubinho vermelho.jpg"],
+        categoria: "vestidos",
+        descricao: "Vestido tubinho canelado forrado por dentro ideal para qualquer ocasiao",
+        tamanhos: ["G"],
+        cores: ["Vermelho"]
+      },
+      {
+       id: 5,
+       nome: "Macacão com cinto",
+       preco: 169.90,
+       imagens: ["imagens/Macacao duna rosa com cinto.jpg"],
+       categoria: "macacao",
+       descricao: "Tecido Duna com cinto encapado elegante para eventos formais.",
+       tamanhos: ["G"],
+       cores: ["Rosa Pink"]
+      },
+      {
+       id: 6,
+       nome: "Bory Suplex",
+       preco: 69.90,
+       imagens: ["imagens/Bory Branco.jpg"],
+       categoria: "",
+       descricao: "Tecido Duna com cinto encapado elegante para eventos formais.",
+       tamanhos: ["Unico"],
+       cores: ["Branco","Preto","Bege"]
+      },
+      {
+       id: 7,
+       nome: "Vestido Floral",
+       preco: 109.90,
+       imagens: ["imagens/Vestido Bege Floral.jpg"],
+       categoria: "vestido",
+       descricao: "Tecido Duna com cinto encapado elegante para eventos formais.",
+       tamanhos: ["Unico"],
+       cores: ["Bege"]
+      },
+      {
+       id: 8,
+       nome: "Macacão com Cinto",
+       preco: 169.90,
+       imagens: ["imagens/Macacao duna verde com cinto.jpg"],
+       categoria: "macacao",
+       descricao: "Tecido Duna com cinto encapado elegante para eventos formais.",
+       tamanhos: ["GG"],
+       cores: ["Verde"]
+      },
+      {
+       id: 9,
+       nome: "Conjunto Cropped e Calça",
+       preco: 99.90,
+       imagens: ["imagens/Conjunto Cropped e Calca Preto.jpg"],
+       categoria: "Conjunto",
+       descricao: "Tecido Duna com cinto encapado elegante para eventos formais.",
+       tamanhos: ["P"],
+       cores: ["Preto"]
+      },
+      {
+       id: 10,
+       nome: "Vestido Liz",
+       preco: 129.90,
+       imagens: ["imagens/Vestido Liz.jpg"],
+       categoria: "Vestido",
+       descricao: "Tecido Duna com cinto encapado elegante para eventos formais.",
+       tamanhos: ["M"],
+       cores: ["Lilás"]
+      },
+      {
+       id: 11,
+       nome: "Macacão Yasmin",
+       preco: 169.90,
+       imagens: ["imagens/Macacao Alfaiataria.jpg"],
+       categoria: "Macacao",
+       descricao: "Tecido Duna com cinto encapado elegante para eventos formais.",
+       tamanhos: ["M"],
+       cores: ["Bege"]
+      },
+    ];
+
+    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+    function salvarCarrinho() {
+      localStorage.setItem("carrinho", JSON.stringify(carrinho));
+    }
+
+    function adicionarAoCarrinho(id) {
+      const produto = carrinho.find(p => p.id === id);
+      if (produto) {
+        produto.quantidade += 1;
+      } else {
+        carrinho.push({ id, quantidade: 1 });
+      }
+      salvarCarrinho();
+      atualizarCarrinho();
+      alert("Produto adicionado ao carrinho!");
+    }
+
+    function removerDoCarrinho(id) {
+      carrinho = carrinho.filter(p => p.id !== id);
+      salvarCarrinho();
+      atualizarCarrinho();
+    }
+
+    function toggleCarrinho() {
+      const c = document.getElementById("carrinho-container");
+      c.classList.toggle("carrinho-oculto");
+    }
+
+    function atualizarCarrinho() {
+      const lista = document.getElementById("carrinho-dropdown");
+      lista.innerHTML = "";
+      let total = 0;
+
+      if (carrinho.length === 0) {
+        lista.innerHTML = "<li>Seu carrinho está vazio.</li>";
+        document.getElementById("total-carrinho").textContent = "";
+        return;
+      }
+
+      carrinho.forEach(item => {
+        const produto = listaProdutos.find(p => p.id === item.id);
+        if (!produto) return;
+
+        total += produto.preco * item.quantidade;
+
+        const li = document.createElement("li");
+        li.innerHTML = `
+          ${produto.nome} - ${item.quantidade}x R$ ${produto.preco.toFixed(2)}
+          <button onclick="removerDoCarrinho(${item.id})">🗑️</button>
+        `;
+
+        lista.appendChild(li);
+      });
+
+      document.getElementById("total-carrinho").textContent = `Total: R$ ${total.toFixed(2)}`;
+    }
+
+    function exibirProdutos(categoria = "") {
+      const container = document.getElementById("lista-produtos");
+      container.innerHTML = "";
+      const filtrados = categoria
+        ? listaProdutos.filter(p => p.categoria.toLowerCase().includes(categoria))
+        : listaProdutos;
+
+      filtrados.forEach(produto => {
+        const card = document.createElement("div");
+        card.className = "produto";
+
+        const link = document.createElement("a");
+        link.href = `produto.html?id=${produto.id}`;
+        link.style.textDecoration = "none";
+        link.style.color = "inherit";
+
+        const img = document.createElement("img");
+        img.src = produto.imagens[0]; // Mostra a primeira imagem
+        img.alt = produto.nome;
+        img.style.cursor = "pointer";
+
+        const nome = document.createElement("div");
+        nome.className = "produto-nome";
+        nome.textContent = produto.nome;
+        nome.style.cursor = "pointer";
+
+        link.appendChild(img);
+        link.appendChild(nome);
+        card.appendChild(link);
+
+        const preco = document.createElement("div");
+        preco.className = "produto-preco";
+        preco.textContent = `R$ ${produto.preco.toFixed(2)}`;
+
+        const botao = document.createElement("button");
+        botao.className = "botao-finalizar";
+        botao.textContent = "Adicionar ao carrinho";
+        botao.onclick = () => adicionarAoCarrinho(produto.id);
+
+        card.appendChild(preco);
+        card.appendChild(botao);
+
+        container.appendChild(card);
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      exibirProdutos();
+      atualizarCarrinho();
+    });
+  </script>
+</body>
+</html>
